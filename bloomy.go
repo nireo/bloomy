@@ -39,10 +39,6 @@ func (bf *BloomFilter) Insert(value []byte) {
 }
 
 func (bf *BloomFilter) Contains(value []byte) bool {
-    a, b:= murmur3.Sum128(value)
-}
-
-func (bf *BloomFilter) Contains(value []byte) bool {
 	a, b := murmur3.Sum128(value)
 	for k := uint32(0); k < bf.k; k += 1 {
 		idx := bf.getIndex(a, b, uint64(k))
